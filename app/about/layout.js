@@ -1,7 +1,12 @@
-const AboutLayout = () => {
+const AboutLayout = ({ children }) => {
   return (
-    <div>layout</div>
+    <div>
+      <h1>
+        This is the about layout.
+      </h1>
+      {children}
+    </div>
   )
 }
 
-export default layout
+export default AboutLayout
