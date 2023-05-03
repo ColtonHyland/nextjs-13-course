@@ -1,7 +1,13 @@
 import React from 'react'
 
-export const loading = () => {
+const LoadingPage = () => {
   return (
-    <div>loading</div>
+    <div className='loader'>
+        <div className='spinner'>
+
+        </div>
+    </div>
   )
 }
+
+export default LoadingPage;

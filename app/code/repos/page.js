@@ -6,6 +6,8 @@ async function fetchRepos() {
   const response = await fetch(
     "https://api.github.com/users/ColtonHyland/repos"
   );
+
+  await new Promise((resolve) => setTimeout(resolve, 1000)); //wait 1 second
   const repos = await response.json();
   return repos;
 }
