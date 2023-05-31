@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import LoadingPage from "./loading";
 import Courses from "./components/Courses";
-import CourseSearch from "./components/CourseSearch"
+import CourseSearch from "./components/CourseSearch";
 
 const HomePage = () => {
   const [courses, setCourses] = useState([]);
@@ -22,13 +22,13 @@ const HomePage = () => {
   }, []);
 
   if (loading) {
-    return <LoadingPage />
+    return <LoadingPage />;
   }
 
   return (
     <>
       <h1>Welcome to my website</h1>
-      <CourseSearch />
+      <CourseSearch getSearchResults={(results) => setCourses(results)} />
       <Courses courses={courses} />
     </>
   );

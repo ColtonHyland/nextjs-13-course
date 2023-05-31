@@ -1,11 +1,13 @@
 "use client";
 import { useState } from "react";
 
-const CourseSearch = () => {
+const CourseSearch = ({ getSearchResults }) => {
   const [query, setQuery] = useState("");
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(query);
+    const res = await fetch(`/api/courses/search?query=${query}`);
+    const courses = await res.json();
+    getSearchResults(courses);
   };
 
   return (
