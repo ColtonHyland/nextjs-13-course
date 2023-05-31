@@ -1,14 +1,35 @@
-import React from 'react'
-import Link from 'next/link'
-import Courses from './components/Courses'
+"use client"; //makes this a client component
+import { useState, useEffect } from "react";
+import React from "react";
+import Link from "next/link";
+import LoadingPage from "./loading";
+import Courses from "./components/Courses";
 
 const HomePage = () => {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const res = await fetch("/api/courses");
+      const data = await res.json();
+      setCourses(data);
+      setLoading(false);
+    };
+
+    fetchCourses();
+  }, []);
+
+  if (loading) {
+    return <LoadingPage />
+  }
+
   return (
     <>
       <h1>Welcome to my website</h1>
-      <Courses />
+      <Courses courses={courses} />
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
