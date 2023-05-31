@@ -3,6 +3,11 @@ import { useState } from "react";
 
 const CourseSearch = () => {
   const [query, setQuery] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(query);
+  };
+
   return (
     <form onSubmit={handleSubmit} className="search-form">
       <input
@@ -12,6 +17,9 @@ const CourseSearch = () => {
         value={query}
         onChange={(event) => setQuery(event.target.value)}
       />
+      <button className="search-button" type="submit">
+        Submit
+      </button>
     </form>
   );
 };
